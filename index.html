@@ -16,11 +16,110 @@
     <title>Train Scheduler</title>
   </head>
   <body>
-    <h1>hola</h1>
+    <div class="jumbotron jumbotron-fluid bg-dark">
+      <div class="container">
+        <h1 class="display-3">Train Scheduler</h1>
+        <p class="lead">Train arrival and departure times</p>
+      </div>
+    </div>
+
+    <h3 class="m-3">Please view the trains on the schedule</h3>
+
+    <!--Firebase table with train information-->
+
+    <table class="table table-dark" id="trainSchedule">
+      <thead>
+        <tr>
+          <th scope="col">Train</th>
+          <th scope="col">Destination</th>
+          <th scope="col">Frequency</th>
+          <th scope="col">Next arrival</th>
+          <th scope="col">Minutes from now</th>
+        </tr>
+      </thead>
+      <!--Firebase input-->
+      <tbody id="train-list"></tbody>
+    </table>
+
+    <h3 class="m-3">Add your train</h3>
+
+    <!--User input form with bootstrap-->
+    <div class="input">
+      <form>
+        <!--Form fields-->
+        <div class="form-group">
+          <label for="formGroupExampeInput">Train Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Example: Brightline"
+          />
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampeInput">Destination</label>
+          <input
+            type="text"
+            class="form-control"
+            id="destination"
+            placeholder="Example: Miami,FL"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampeInput">First Train Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstrain"
+            placeholder="Example: Metrorail"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="formGroupExampeInput">Frequency(Number of Minutes)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="frequency"
+            placeholder="Example: 1 minute"
+          />
+        </div>
+      </form>
+      <!-- submit button -->
+      <button type="submit" class="btn btn-primary" id="addTrain">
+        Submit
+      </button>
+      <br /><br />
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="./assets/javaScript/app.js"></script>
+    <!-- Moment.js Reference -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <!-- Firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCoxt6f4BnTujkxsuqb5SKyHlFjGtMZeKM",
+        authDomain: "train-scheduler-6aaa4.firebaseapp.com",
+        databaseURL: "https://train-scheduler-6aaa4.firebaseio.com",
+        projectId: "train-scheduler-6aaa4",
+        storageBucket: "train-scheduler-6aaa4.appspot.com",
+        messagingSenderId: "447891290048",
+        appId: "1:447891290048:web:e31b57bff2e0613f"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>
