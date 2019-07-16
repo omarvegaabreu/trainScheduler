@@ -20,81 +20,85 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   </head>
   <body>
-    <div class="jumbotron jumbotron-fluid bg-dark">
-      <div class="container">
-        <h1 class="display-3">Train Scheduler</h1>
-        <p class="lead">Train arrival and departure times</p>
+    <div id="mainContainer" class="container">
+      <div class="jumbotron">
+        <h1 class="text-center">Train Scheduler</h1>
+        <h3 class="text-center">Please submit your train!</h3>
       </div>
-    </div>
 
-    <h3 class="m-3">Please view the trains on the schedule</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4">
+            <div class="card-header ">Current Train Schedule</div>
+            <div class="card-body">
+              <table class="table table-sm table-hover" id="train-table">
+                <thead>
+                  <tr>
+                    <th scope="col"><p>Name</p></th>
+                    <th scope="col"><p>Destination</p></th>
+                    <th scope="col"><p>Frequency</p></th>
+                    <th scope="col"><p>Next Arrival</p></th>
+                    <th scope="col"><p>Minutes Away</p></th>
+                  </tr>
+                </thead>
 
-    <!--Firebase table with train information-->
-
-    <table class="table table-dark" id="trainSchedule">
-      <thead>
-        <tr>
-          <th scope="col">Train</th>
-          <th scope="col">Destination</th>
-          <th scope="col">Frequency</th>
-          <th scope="col">Next arrival</th>
-          <th scope="col">Minutes from now</th>
-        </tr>
-      </thead>
-      <!--Firebase input-->
-      <tbody id="train-list"></tbody>
-    </table>
-
-    <h3 class="m-3">Add your train</h3>
-
-    <!--User input form with bootstrap-->
-    <div class="input">
-      <form>
-        <!--Form fields-->
-        <div class="form-group">
-          <label for="formGroupExampeInput">Train Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            placeholder="Example: Brightline"
-          />
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="formGroupExampeInput">Destination</label>
-          <input
-            type="text"
-            class="form-control"
-            id="destination"
-            placeholder="Example: Miami,FL"
-          />
-        </div>
+      </div>
 
-        <div class="form-group">
-          <label for="formGroupExampeInput">First Train Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="firsTrain"
-            placeholder="Example: Metrorail"
-          />
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4">
+            <div class="card-header">Add Train</div>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label for="train-name-input">Train Name</label>
+                  <input
+                    class="form-control"
+                    id="train-name-input"
+                    placeholder="Ex.Metro Rail"
+                    type="text"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="destination-input">Destination</label>
+                  <input
+                    class="form-control"
+                    id="destination-input"
+                    placeholder="Ex. Miami,FL"
+                    type="text"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="start-train-input">First Train Time</label>
+                  <input
+                    class="form-control"
+                    id="start-train-input"
+                    placeholder="Please use 24hr format"
+                    type="text"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="frequency-rate-input">Frequency</label>
+                  <input
+                    class="form-control"
+                    id="frequency-rate-input"
+                    placeholder="In minutes"
+                    type="text"
+                  />
+                </div>
+                <button class="btn btn-primary float-right" id="add-train-btn">
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
-
-        <div class="form-group">
-          <label for="formGroupExampeInput">Frequency(Number of Minutes)</label>
-          <input
-            type="text"
-            class="form-control"
-            id="requency"
-            placeholder="Example: 1 minute"
-          />
-        </div>
-      </form>
-      <!-- submit button -->
-      <button type="submit" class="btn btn-primary" id="addTrain">
-        Submit
-      </button>
-      <br /><br />
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

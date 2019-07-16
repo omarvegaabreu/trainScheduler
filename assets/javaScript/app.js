@@ -10,40 +10,79 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const database = firebase.database();
+// Variable for Firebase DataBase
+var database = firebase.database();
 
-//fill the fire base with initial data when button is clicked
-$("addTrain").on("click", function(event) {
-  event.preventDefault();
+// Button for adding Train to Schedule
+$("#add-train-btn").on("click", function(e) {
+  e.preventDefault();
 
-  //get user input from fields and assign to variables
-  let trainName = $("#name")
+  var trainName = $("#train-name-input")
+      .val()
+      .trim(),
+    destination = $("#destination-input")
+      .val()
+      .trim(),
+    startTrain = moment(
+      $("#start-train-input")
+        .val()
+        .trim(),
+      "HH:mm"
+    ).format("HH:mm");
+  (frequency = $("#frequency-rate-input")
     .val()
-    .trim();
-  let destination = $("#destination")
-    .val()
-    .trim();
-  let firsTrain = $("#firsTrain")
-    .val()
-    .trim();
-  let frequency = $("#frequency")
-    .val()
-    .trim();
+    .trim()),
+    // Train Object for adding to DB easier
+    (newTrain = {
+      name: trainName,
+      destination: destination,
+      firstTrain: startTrain,
+      frequency: frequency
+    });
 
-  //make a local temporaty storage to operate train data
-  let tempTrain = {
-    name: trainName,
-    destination: destination,
-    firsTrain: firsTrain,
-    frequency: frequency
-  };
-  //to upload train data to firebase
-  database.ref().push(tempTrain);
+  // Push New Train Information to the DB
+  database.ref().push(newTrain);
 
-  //Test values in the console
-  console.log("pushed to firebase");
-  console.log(tempTrain.name);
-  console.log(tempTrain.destination);
-  console.log(tempTrain.firsTrain);
-  console.log(tempTrain.frequency);
-});
+  // console.log(newTrain.name);
+  // console.log(newTrain.destination);
+  // console.log(newTrain.firstTrain);
+  // console.log(newTrain.frequency);
+
+  // Clear Forms Input Values
+  $("#train-name-input").val("");
+  $("#destination-input").val("");
+  $("#start-train-input").val("");
+  $("#frequency-rate-input").val("");
+}); // End "Add Train" Function
+
+// After New Train is added, get New Train Info to display on page
+database.ref().on("child_added", function(childSnapShot) {
+  console.log(childSnapShot.val());
+
+  var trainName = childSnapShot.val().name,
+    destination = childSnapShot.val().destination,
+    startTrain = childSnapShot.val().firstTrain,
+    frequency = childSnapShot.val().frequency;
+
+  var convertedTime = moment(startTrain, "HH:mm").subtract(1, "years"),
+    diffTime = moment().diff(moment(convertedTime), "minutes"),
+    timeRemain = diffTime % frequency,
+    minAway = frequency - timeRemain,
+    nextTrain = moment()
+      .add(minAway, "minutes")
+      .format("HH:mm");
+  console.log(convertedTime);
+  console.log(diffTime);
+  console.log(timeRemain);
+  console.log(minAway);
+
+  var newRow = $("<tr>").append(
+    $("<td>").text(trainName),
+    $("<td>").text(destination),
+    $("<td>").text(frequency),
+    $("<td>").text(nextTrain),
+    $("<td>").text(minAway)
+  );
+
+  $("#train-table > tbody").append(newRow);
+}); // End New Train Info to Display on Page
