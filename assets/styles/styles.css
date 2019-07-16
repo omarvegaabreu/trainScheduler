@@ -1,22 +1,42 @@
 body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("https://wallpaperfm.com/img/original/7/7/9/61938.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .jumbotron {
   background: none; /* Transparent background */
   font-family: Georgia, Times, "Times New Roman", serif;
   background: no-repeat;
 }
-.card {
+.card-header {
   border: 5px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  background: none;
-  text-emphasis: none;
+  color: rgb(245, 66, 66);
+  font-weight: bold;
+}
+.card {
+  border: 5px solid;
+  border-radius: 0.25rem;
+  background: transparent;
+  font-size: 1.5rem;
+  text-align: center;
 }
 h1,
 h3 {
-  color: rgb(245, 66, 66);
+  color: rgb(230, 20, 20);
 }
 p {
   color: rgb(245, 66, 66);
+}
+td {
+  color: rgb(245, 66, 66);
+  border-color: rgb(245, 66, 66);
+  font-weight: bold;
+}
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: rgb(245, 66, 66);
+  font-weight: bold;
 }
