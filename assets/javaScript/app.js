@@ -9,3 +9,41 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+const database = firebase.database();
+
+//fill the fire base with initial data when button is clicked
+$("addTrain").on("click", function(event) {
+  event.preventDefault();
+
+  //get user input from fields and assign to variables
+  let trainName = $("#name")
+    .val()
+    .trim();
+  let destination = $("#destination")
+    .val()
+    .trim();
+  let firsTrain = $("#firsTrain")
+    .val()
+    .trim();
+  let frequency = $("#frequency")
+    .val()
+    .trim();
+
+  //make a local temporaty storage to operate train data
+  let tempTrain = {
+    name: trainName,
+    destination: destination,
+    firsTrain: firsTrain,
+    frequency: frequency
+  };
+  //to upload train data to firebase
+  database.ref().push(tempTrain);
+
+  //Test values in the console
+  console.log("pushed to firebase");
+  console.log(tempTrain.name);
+  console.log(tempTrain.destination);
+  console.log(tempTrain.firsTrain);
+  console.log(tempTrain.frequency);
+});
