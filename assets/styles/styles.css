@@ -8,6 +8,7 @@ body {
   background: none; /* Transparent background */
   font-family: Georgia, Times, "Times New Roman", serif;
   background: no-repeat;
+  font-weight: bold;
 }
 .card-header {
   border: 5px solid rgba(0, 0, 0, 0.125);
@@ -20,11 +21,11 @@ body {
   border-radius: 0.25rem;
   background: transparent;
   font-size: 1.5rem;
-  text-align: center;
 }
 h1,
 h3 {
-  color: rgb(230, 20, 20);
+  color: rgb(245, 66, 66);
+  font-weight: bold;
 }
 p {
   color: rgb(245, 66, 66);
@@ -39,4 +40,5 @@ label {
   margin-bottom: 0.5rem;
   color: rgb(245, 66, 66);
   font-weight: bold;
+  text-align: center;
 }
