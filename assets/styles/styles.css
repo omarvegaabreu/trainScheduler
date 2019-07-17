@@ -30,9 +30,13 @@ h3 {
 p {
   color: rgb(245, 66, 66);
 }
-td {
+
+td,
+th {
+  border: 1px solid transparent;
+  padding: 0.5rem;
   color: rgb(245, 66, 66);
-  border-color: rgb(245, 66, 66);
+  border-color: none;
   font-weight: bold;
 }
 label {
@@ -41,4 +45,21 @@ label {
   color: rgb(245, 66, 66);
   font-weight: bold;
   text-align: center;
+}
+th {
+  border: 1px solid transparent;
+  padding: 0.5rem;
+  color: rgb(245, 66, 66);
+  border-color: none;
+  font-weight: bold;
+}
+.btn {
+  background-color: rgb(245, 66, 66);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
