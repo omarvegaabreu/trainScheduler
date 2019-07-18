@@ -77,9 +77,7 @@ database.ref().on("child_added", function(childSnapShot) {
   console.log(minAway);
 
   var newRow = $("<tr>").append(
-    $("<td>")
-      .text(trainName)
-      .css("background-color:blue"),
+    $("<td>").text(trainName),
     $("<td>").text(destination),
     $("<td>").text(frequency),
     $("<td>").text(nextTrain),
