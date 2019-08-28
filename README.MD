@@ -21,3 +21,10 @@ In this assigment I created a train schedule application that incorporates Fireb
 - This app will calculate when the next train will arrive; this will be relative to the current time.
 
 - Users from many different machines will be able to view same train times.
+
+### Technologies used
+-Bootstrap
+-HTML/CSS
+-Javascripts
+-jQuery
+-Firebase
