@@ -2,11 +2,11 @@
 
 # Firebase / Train Scheduler
 
-Please click the link to to see the working app.
+Please click the link to see the working app.
 
-https://omarvegaabreu.github.io/trainScheduler/
+URL: https://omarvegaabreu.github.io/trainScheduler/
 
-In this assigment I created a train schedule application that incorporates Firebase to host arrival and departure data. The app will retrieve and manipulate this information with Moment.js. This website will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
+This is a train schedule application that incorporates Firebase to host arrival and departure data for trains. The app will retrieve and manipulate this information with Moment.js. This App will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
 
 ### Instructions
 
@@ -27,6 +27,6 @@ In this assigment I created a train schedule application that incorporates Fireb
 ### Technologies used
 -Bootstrap
 -HTML/CSS
--Javascripts
+-JavaScript 
 -jQuery
 -Firebase
